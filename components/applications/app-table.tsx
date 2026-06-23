@@ -159,22 +159,22 @@ export function AppTable({ initialData }: { initialData: ListResult }) {
           No applications match your filters.
         </p>
       ) : (
-        <div className="rounded-xl border">
+        <div className="overflow-hidden rounded-xl border border-border/60 bg-card">
           <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Company</TableHead>
+            <TableHeader className="bg-muted/30 [&_th]:h-11 [&_th]:text-xs [&_th]:font-medium [&_th]:tracking-wide [&_th]:text-muted-foreground [&_th]:uppercase">
+              <TableRow className="hover:bg-transparent">
+                <TableHead className="pl-4">Company</TableHead>
                 <TableHead>Role</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead>Location</TableHead>
-                <TableHead>Applied Date</TableHead>
-                <TableHead className="text-right">Actions</TableHead>
+                <TableHead>Applied</TableHead>
+                <TableHead className="pr-4 text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody className={isFetching ? "opacity-60" : undefined}>
               {rows.map((row) => (
-                <TableRow key={row.id}>
-                  <TableCell className="font-medium">
+                <TableRow key={row.id} className="[&_td]:py-3">
+                  <TableCell className="pl-4 font-medium">
                     {row.companyName}
                   </TableCell>
                   <TableCell>{row.role}</TableCell>
@@ -187,7 +187,7 @@ export function AppTable({ initialData }: { initialData: ListResult }) {
                   <TableCell className="text-muted-foreground">
                     {formatDate(row.appliedDate)}
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="pr-4">
                     <div className="flex items-center justify-end gap-1">
                       <Button asChild variant="ghost" size="icon-sm">
                         <Link

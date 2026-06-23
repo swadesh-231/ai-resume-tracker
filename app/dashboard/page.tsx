@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -24,9 +25,7 @@ export default async function DashboardPage() {
   ]);
 
   if (!statsResult.ok) {
-    return (
-      <p className="text-sm text-destructive">{statsResult.error}</p>
-    );
+    return <p className="text-sm text-destructive">{statsResult.error}</p>;
   }
 
   const stats = statsResult.data;
@@ -34,34 +33,40 @@ export default async function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Overview</h1>
-          <p className="text-sm text-muted-foreground">
-            Your job search at a glance.
+          <p className="mt-1 text-sm text-muted-foreground">
+            {stats.total === 0
+              ? "Add your first application to start tracking."
+              : `You're tracking ${stats.total} application${
+                  stats.total === 1 ? "" : "s"
+                }.`}
           </p>
         </div>
         <Button asChild>
           <Link href="/dashboard/applications/new">
-            <PlusIcon /> Add Application
+            <PlusIcon /> Add application
           </Link>
         </Button>
       </div>
 
       <StatsCards stats={stats} />
 
-      <div className="grid gap-4 lg:grid-cols-2">
-        <Card>
+      <div className="grid gap-4 lg:grid-cols-5">
+        <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle>Status Distribution</CardTitle>
+            <CardTitle>Status distribution</CardTitle>
+            <CardDescription>Where your applications stand</CardDescription>
           </CardHeader>
           <CardContent>
             <StatusPie data={stats.statusDistribution} />
           </CardContent>
         </Card>
-        <Card>
+        <Card className="lg:col-span-3">
           <CardHeader>
-            <CardTitle>Monthly Applications</CardTitle>
+            <CardTitle>Monthly applications</CardTitle>
+            <CardDescription>Applications over the last 6 months</CardDescription>
           </CardHeader>
           <CardContent>
             <MonthlyBar data={stats.monthly} />
@@ -71,7 +76,10 @@ export default async function DashboardPage() {
 
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Recent Applications</CardTitle>
+          <div>
+            <CardTitle>Recent applications</CardTitle>
+            <CardDescription>Your five latest entries</CardDescription>
+          </div>
           <Button asChild variant="ghost" size="sm">
             <Link href="/dashboard/applications">View all</Link>
           </Button>

@@ -25,6 +25,15 @@ export const applicationSchema = z.object({
 
 export type ApplicationInput = z.infer<typeof applicationSchema>;
 
+// Client form schema: the date input produces a "YYYY-MM-DD" string. The server
+// action re-validates with `applicationSchema` (coerced Date) — never trust the
+// client alone.
+export const applicationFormSchema = applicationSchema.extend({
+  appliedDate: z.string().min(1, "Applied date is required"),
+});
+
+export type ApplicationFormValues = z.infer<typeof applicationFormSchema>;
+
 // Filters used by the applications list (search / filter / sort / paginate).
 export const SORTS = ["date_desc", "date_asc"] as const;
 export type Sort = (typeof SORTS)[number];

@@ -23,8 +23,8 @@ export function RecentTable({ rows }: { rows: Application[] }) {
 
   return (
     <Table>
-      <TableHeader>
-        <TableRow>
+      <TableHeader className="[&_th]:text-xs [&_th]:font-medium [&_th]:tracking-wide [&_th]:text-muted-foreground [&_th]:uppercase">
+        <TableRow className="hover:bg-transparent">
           <TableHead>Company</TableHead>
           <TableHead>Role</TableHead>
           <TableHead>Status</TableHead>
@@ -33,7 +33,7 @@ export function RecentTable({ rows }: { rows: Application[] }) {
       </TableHeader>
       <TableBody>
         {rows.map((row) => (
-          <TableRow key={row.id}>
+          <TableRow key={row.id} className="[&_td]:py-3">
             <TableCell className="font-medium">
               <Link
                 href={`/dashboard/applications/${row.id}`}

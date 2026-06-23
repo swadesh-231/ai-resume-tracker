@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MenuIcon, BriefcaseBusinessIcon } from "lucide-react";
+import { MenuIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -12,6 +12,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { NavLinks } from "@/components/dashboard/nav-links";
+import { Logo } from "@/components/shared/logo";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -24,11 +25,12 @@ export function MobileNav() {
           <span className="sr-only">Open navigation</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="w-64 p-0">
-        <SheetHeader className="border-b">
-          <SheetTitle className="flex items-center gap-2">
-            <BriefcaseBusinessIcon className="size-5 text-primary" />
-            AI Resume Tracker
+      <SheetContent side="left" className="w-72 bg-sidebar p-0">
+        <SheetHeader className="border-b border-border/60">
+          <SheetTitle asChild>
+            <div>
+              <Logo href="/dashboard" />
+            </div>
           </SheetTitle>
         </SheetHeader>
         <div className="p-3">

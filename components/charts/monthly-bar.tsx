@@ -48,12 +48,18 @@ export function MonthlyBar({ data }: { data: DashboardStats["monthly"] }) {
           contentStyle={{
             background: "var(--popover)",
             border: "1px solid var(--border)",
-            borderRadius: "var(--radius)",
+            borderRadius: "calc(var(--radius) - 2px)",
             color: "var(--popover-foreground)",
             fontSize: "0.8rem",
+            boxShadow: "0 8px 24px rgba(0,0,0,0.25)",
           }}
         />
-        <Bar dataKey="count" fill="var(--primary)" radius={[6, 6, 0, 0]} />
+        <Bar
+          dataKey="count"
+          fill="var(--brand)"
+          radius={[6, 6, 0, 0]}
+          maxBarSize={56}
+        />
       </BarChart>
     </ResponsiveContainer>
   );

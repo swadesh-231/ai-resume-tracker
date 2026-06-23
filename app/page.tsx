@@ -64,7 +64,7 @@ export default function Home() {
         {/* Hero */}
         <section className="relative overflow-hidden">
           <div className="pointer-events-none absolute inset-0 bg-grid opacity-60" />
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-[600px] hero-glow" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-150 hero-glow" />
 
           <div className="relative mx-auto w-full max-w-6xl px-4 pt-20 pb-16 sm:px-6 sm:pt-28">
             <div className="mx-auto flex max-w-3xl flex-col items-center text-center">

@@ -9,6 +9,8 @@ export default function SignUpPage() {
       subheading="Start tracking your job applications in minutes."
     >
       <SignUp
+        forceRedirectUrl="/dashboard"
+        signInUrl="/sign-in"
         appearance={{ elements: { rootBox: "w-full", cardBox: "w-full" } }}
       />
     </AuthShell>

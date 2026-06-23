@@ -9,6 +9,8 @@ export default function SignInPage() {
       subheading="Sign in to continue to your dashboard."
     >
       <SignIn
+        forceRedirectUrl="/dashboard"
+        signUpUrl="/sign-up"
         appearance={{ elements: { rootBox: "w-full", cardBox: "w-full" } }}
       />
     </AuthShell>
